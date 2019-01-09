@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/wgs11/salesanalytics",
+	"GoVersion": "go1.11",
+	"GodepVersion": "v80",
+	"Deps": []
+}
