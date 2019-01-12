@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -24,5 +26,30 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 	creds := &Credentials{}
 	creds.Username = r.FormValue("username")
 	creds.Password = r.FormValue("password")
+	if store.CheckUser(creds) == nil {
+		session,_ := cache.Get(r, "cookie-name")
+		session.Values["authenticated"] = true
+		session.Values["user"] = creds.Username
+		if (creds.Username == "Sheppy"){
+			session.Values["admin"] = true
+		} else {
+			session.Values["admin"] = false
+		}
+		session.Save(r,w)
+	} else{
+		fmt.Println("/")
+	}
 
+}
+
+
+func Signup(w http.ResponseWriter, r *http.Request) {
+	creds := &Credentials{}
+	err := json.NewDecoder(r.Body).Decode(creds)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	fmt.Println(creds.Username, creds.Password)
+	store.CreateUser(creds)
 }
