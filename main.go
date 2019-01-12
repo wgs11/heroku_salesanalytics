@@ -5,7 +5,14 @@ import (
   "fmt"
   "net/http"
   "os"
+  "html/template"
+  "github.com/gorilla/securecookie"
 )
+var fmap = template.FuncMap {
+
+}
+var templates = template.Must(template.New("").Funcs(fmap).ParseGlob("templates/*gohtml"))
+var cache = sessions.NewCookieStore(securecookie.GenerateRandomKey(32))
 
 func determineListenAddress() (string, error) {
   port := os.Getenv("PORT")
