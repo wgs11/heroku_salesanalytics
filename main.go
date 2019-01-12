@@ -1,18 +1,29 @@
 package main
 
 import (
+  "github.com/gorilla/mux"
   "log"
   "fmt"
   "net/http"
   "os"
   "html/template"
   "github.com/gorilla/securecookie"
+  "github.com/gorilla/sessions"
 )
 var fmap = template.FuncMap {
 
 }
 var templates = template.Must(template.New("").Funcs(fmap).ParseGlob("templates/*gohtml"))
 var cache = sessions.NewCookieStore(securecookie.GenerateRandomKey(32))
+
+func newRouter() *mux.Router {
+  r := mux.NewRouter()
+  staticFileDirectory := http.Dir("./assets/")
+  staticFileHandler := http.StripPrefix("/assets/",http.FileServer(staticFileDirectory))
+  r.PathPrefix("/assets/").Handler(staticFileHandler)
+  r.HandleFunc("/", hello)
+  return r
+}
 
 func determineListenAddress() (string, error) {
   port := os.Getenv("PORT")
@@ -31,10 +42,10 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
+  r := newRouter()
 
-  http.HandleFunc("/", hello)
   log.Printf("Listening on %s...\n", addr)
-  if err := http.ListenAndServe(addr, nil); err != nil {
+  if err := http.ListenAndServe(addr, r); err != nil {
     panic(err)
   }
 }

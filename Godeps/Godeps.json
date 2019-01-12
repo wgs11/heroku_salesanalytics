@@ -4,9 +4,19 @@
 	"GodepVersion": "v80",
 	"Deps": [
 		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.6.2-20-g08e7f80",
+			"Rev": "08e7f807d38d6a870193019bb439056118661505"
+		},
+		{
 			"ImportPath": "github.com/gorilla/securecookie",
 			"Comment": "v1.1.1-9-ge65cf8c",
 			"Rev": "e65cf8c5df817c89aeb47ecb46064e802e2de943"
+		},
+		{
+			"ImportPath": "github.com/gorilla/sessions",
+			"Comment": "v1.1.3-6-g12bd476",
+			"Rev": "12bd4761fc66ac946e16fcc2a32b1e0b066f6177"
 		}
 	]
 }
