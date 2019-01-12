@@ -1,0 +1,31 @@
+{{define "create"}}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card card-container">
+        <form action="/create">
+            <input type="fname" name="fname" id="inputFname" class="form-control" placeholder="First Name" required>
+            <input type="lname" name="lname" id="inputLname" class="form-control" placeholder="Last Name" required>
+            <input type="username" name="username" id="inputEmail" class="form-control" placeholder="User Name" required autofocus>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="store" name="store" id="inputStore" class="form-control" placehodler="Home Store" required>
+            <select name="position">
+                <option value=0>Team Member</option>
+                <option value=1>Team Leader</option>
+                <option value=2>Team Manager</option>
+                <option value=3>Assistant Manager</option>
+                <option value=4>Store Manager</option>
+            </select>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+        </form><!-- /form -->
+    </div><!-- /card-container -->
+</div><!-- /container -->
+</body>
+</html>
+{{end}}
