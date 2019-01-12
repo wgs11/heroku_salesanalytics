@@ -1,6 +1,7 @@
 package main
 
 import (
+  "database/sql"
   "github.com/gorilla/mux"
   "log"
   "fmt"
@@ -42,6 +43,8 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
+  db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+  InitStore(&dbStore{db: db})
   r := newRouter()
 
   log.Printf("Listening on %s...\n", addr)
