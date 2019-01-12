@@ -25,6 +25,7 @@ func newRouter() *mux.Router {
   r.HandleFunc("/", Displayhome)
   r.PathPrefix("/assets/").Handler(staticFileHandler)
   r.HandleFunc("/stores", Getstores)
+  r.HandleFunc("/create", Makeuser)
   return r
 }
 
