@@ -4,6 +4,7 @@ package main
 import (
 	"database/sql"
 	"golang.org/x/crypto/bcrypt"
+	"log"
 )
 
 type Store interface {
@@ -36,6 +37,7 @@ func (store *dbStore) CreateUser(creds *newUser) error {
 	hashedPassword,_ := bcrypt.GenerateFromPassword([]byte(creds.Password),8)
 	_,err := store.db.Query("INSERT INTO employees VALUES ($1, $2, $3, $4, $5, $6)", string(creds.First), string(creds.Last), string(creds.Position), string(creds.Home), string(creds.Username), string(hashedPassword))
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 	return nil
