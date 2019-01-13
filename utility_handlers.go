@@ -10,7 +10,7 @@ type Credentials struct {
 	Username string `json:"username", db:"username"`
 }
 
-type newUser struct {
+type NewUser struct {
 	Password string `json:"password", db:"password"`
 	Username string `json:"username", db:"username"`
 	First	string `json:"fname", db:"fname"`
@@ -56,7 +56,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	creds := &newUser{}
+	creds := &NewUser{}
 	creds.Username = r.FormValue("username")
 	creds.Password = r.FormValue("password")
 	creds.First = r.FormValue("fname")

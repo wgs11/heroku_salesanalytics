@@ -9,7 +9,7 @@ import (
 
 type Store interface {
 	CheckUser(creds *Credentials) error
-	CreateUser(creds *newUser) error
+	CreateUser(creds *NewUser) error
 
 }
 
@@ -33,9 +33,9 @@ func (store *dbStore) CheckUser(creds *Credentials) error {
 	return nil
 }
 
-func (store *dbStore) CreateUser(creds *newUser) error {
+func (store *dbStore) CreateUser(creds *NewUser) error {
 	hashedPassword,_ := bcrypt.GenerateFromPassword([]byte(creds.Password),8)
-	_,err := store.db.Query("INSERT INTO employees VALUES ($1, $2, $3, $4, $5, $6)", string(creds.First), string(creds.Last), string(creds.Position), string(creds.Home), string(creds.Username), string(hashedPassword))
+	_,err := store.db.Query("INSERT INTO employees(fname,lname,position,store_id,user_name,password) VALUES ($1, $2, $3, $4, $5, $6)", string(creds.First), string(creds.Last), string(creds.Position), string(creds.Home), string(creds.Username), string(hashedPassword))
 	if err != nil {
 		log.Println(err)
 		return err
