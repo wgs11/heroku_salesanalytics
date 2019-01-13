@@ -10,6 +10,7 @@ import (
   "html/template"
   "github.com/gorilla/securecookie"
   "github.com/gorilla/sessions"
+  _ "github.com/lib/pq"
 )
 var fmap = template.FuncMap {
 
