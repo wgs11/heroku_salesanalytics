@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -9,6 +8,15 @@ import (
 type Credentials struct {
 	Password string `json:"password", db:"password"`
 	Username string `json:"username", db:"username"`
+}
+
+type newUser struct {
+	Password string `json:"password", db:"password"`
+	Username string `json:"username", db:"username"`
+	First	string `json:"fname", db:"fname"`
+	Last 	string `json:"fname", db:"lname"`
+	Home	string `json:"store_id", db:"store_id"`
+	Position string `json:"position", db:"position"`
 }
 
 func IsSignedIn(w http.ResponseWriter, r *http.Request) bool {
@@ -44,12 +52,17 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 
 
 func Signup(w http.ResponseWriter, r *http.Request) {
-	creds := &Credentials{}
-	err := json.NewDecoder(r.Body).Decode(creds)
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	creds := &newUser{}
+	creds.Username = r.FormValue("username")
+	creds.Password = r.FormValue("password")
+	creds.First = r.FormValue("fname")
+	creds.Last = r.FormValue("lname")
+	creds.Position = r.FormValue("position")
+	creds.Home = r.FormValue("store")
 	fmt.Println(creds.Username, creds.Password)
 	store.CreateUser(creds)
 }
