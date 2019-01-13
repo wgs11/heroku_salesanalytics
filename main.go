@@ -48,6 +48,9 @@ func main() {
     log.Fatal(err)
   }
   db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+  if err != nil {
+    fmt.Println(err)
+  }
   InitStore(&dbStore{db: db})
   db.Ping()
   r := newRouter()
