@@ -33,12 +33,17 @@ func (store *dbStore) CheckUser(creds *Credentials) error {
 }
 
 func (store *dbStore) CreateUser(creds *NewUser) error {
+	fmt.Println(creds.Username, creds.Password, creds.First,creds.Last,creds.Position,creds.Home)
 	hashedPassword,_ := bcrypt.GenerateFromPassword([]byte(creds.Password),8)
-	_,err := store.db.Query("INSERT INTO employees(fname,lname,position,store_id,user_name,password) VALUES ($1, $2, $3, $4, $5, $6)", string(creds.First), string(creds.Last), 2, 3, string(creds.Username), string(hashedPassword))
+	fmt.Println(hashedPassword)
+	fmt.Println("here we are")
+	_,err := store.db.Query("INSERT INTO employees(fname,lname,position,store_id,user_name,password) VALUES ($1, $2, $3, $4, $5, $6)", creds.First, creds.Last, 2, 3, string(creds.Username), string(hashedPassword))
 	if err != nil {
+		fmt.Println("there was a problem")
 		fmt.Println(err)
 		return err
 	}
+	fmt.Println("got to here")
 	return nil
 }
 

@@ -49,8 +49,8 @@ func main() {
   }
   db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
   InitStore(&dbStore{db: db})
+  db.Ping()
   r := newRouter()
-
   log.Printf("Listening on %s...\n", addr)
   if err := http.ListenAndServe(addr, r); err != nil {
     panic(err)
