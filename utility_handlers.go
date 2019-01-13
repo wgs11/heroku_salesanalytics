@@ -63,6 +63,6 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	creds.Last = r.FormValue("lname")
 	creds.Position = r.FormValue("position")
 	creds.Home = r.FormValue("store")
-	fmt.Println(creds.Username, creds.Password)
+	fmt.Println(creds.Username, creds.Password, creds.First,creds.Last,creds.Position,creds.Home)
 	store.CreateUser(creds)
 }
