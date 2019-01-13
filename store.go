@@ -18,7 +18,7 @@ type dbStore struct {
 
 func (store *dbStore) CheckUser(creds *Credentials) error {
 	dummyCreds := &Credentials{}
-	row, err := store.db.Query("SELECT password FROM users WHERE username = $1",creds.Username)
+	row, err := store.db.Query("SELECT password FROM employees WHERE username = $1",creds.Username)
 	if err != nil {
 		return err
 	} else {
