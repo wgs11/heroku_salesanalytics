@@ -26,6 +26,7 @@ func (store *dbStore) CheckUser(creds *Credentials) error {
 		err := row.Next()
 		if err {
 			row.Scan(&dummyCreds.Password)
+			fmt.Println(bcrypt.CompareHashAndPassword([]byte(dummyCreds.Password),[]byte(creds.Password)))
 			return(bcrypt.CompareHashAndPassword([]byte(dummyCreds.Password),[]byte(creds.Password)))
 		}
 	}
