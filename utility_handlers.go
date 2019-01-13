@@ -44,6 +44,7 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 			session.Values["admin"] = false
 		}
 		session.Save(r,w)
+		http.Redirect(w,r,"/", http.StatusFound)
 	} else{
 		fmt.Println("/")
 	}
@@ -65,4 +66,5 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	creds.Home = r.FormValue("store")
 	fmt.Println(creds.Username, creds.Password, creds.First,creds.Last,creds.Position,creds.Home)
 	store.CreateUser(creds)
+	http.Redirect(w, r, "/", http.StatusOK)
 }
