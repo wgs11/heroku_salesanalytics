@@ -17,22 +17,19 @@ type dbStore struct {
 	db *sql.DB
 }
 func (store *dbStore) GetStore(user string) error {
-	location := &Location{}
-	fmt.Println(user)
-	row, err := store.db.Query("SELECT (location_id, location_name,manager_id,region) FROM stores")
+	place := &Location{}
+	row, err := store.db.Query("SELECT location_id,location_name,manager_id,region FROM stores")
 	if err != nil {
-		fmt.Println(err)
 		return err
 	} else {
 		defer row.Close()
 		err := row.Next()
 		if err {
-			fmt.Println("got here, there was a result row")
-			row.Scan(&location.LocationID, &location.City, &location.ManagerID, &location.Region)
-			fmt.Println(location.LocationID, location.City, location.ManagerID, location.Region)
-			}
+			row.Scan(&place.LocationID,&place.City,&place.ManagerID,&place.Region)
+			fmt.Println(&place.LocationID)
+			return nil
 		}
-
+	}
 	return nil
 }
 func (store *dbStore) CheckUser(creds *Credentials) error {
