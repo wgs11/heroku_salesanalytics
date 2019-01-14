@@ -19,7 +19,7 @@ type dbStore struct {
 func (store *dbStore) GetStore(user string) error {
 	location := &Location{}
 	fmt.Println(user)
-	row, err := store.db.Query("SELECT (location_id, location_name,manager_id,region) FROM stores WHERE location_id = (SELECT store_id FROM employees WHERE user_name = $1)",user)
+	row, err := store.db.Query("SELECT (location_id, location_name,manager_id,region) FROM stores")
 	if err != nil {
 		fmt.Println(err)
 		return err
