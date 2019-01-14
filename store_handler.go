@@ -20,7 +20,7 @@ func Getstores(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		} else {
-			err = templates.ExecuteTemplate(w, "store", place)
+			err = templates.ExecuteTemplate(w, "store", (*place))
 			if err != nil {
 				log.Fatal("Cannot retrieve store page.")
 			}
