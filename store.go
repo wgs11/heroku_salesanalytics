@@ -27,10 +27,11 @@ func (store *dbStore) GetStore(user string) error {
 		defer row.Close()
 		err := row.Next()
 		if err {
-			row.Scan(&location.LocationID, location.City, location.ManagerID, location.Region)
-			fmt.Println(location.LocationID,location.City,location.ManagerID,location.Region)
+			row.Scan(location.LocationID, location.City, location.ManagerID, location.Region);
+			fmt.Println(location.LocationID, location.City, location.ManagerID, location.Region)
+			}
 		}
-	}
+
 	return nil
 }
 func (store *dbStore) CheckUser(creds *Credentials) error {
