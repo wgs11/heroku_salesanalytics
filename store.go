@@ -21,6 +21,7 @@ func (store *dbStore) GetStore(user string) error {
 	fmt.Println(user)
 	row, err := store.db.Query("SELECT (location_id,location_name,manager_id,region) FROM stores WHERE location_id = (SELECT store_id FROM employees WHERE user_name = $1)",user)
 	if err != nil {
+		fmt.Println(err)
 		return err
 	} else {
 		defer row.Close()
