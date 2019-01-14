@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 type Location struct {
@@ -14,7 +15,16 @@ type Location struct {
 func Getstores(w http.ResponseWriter, r *http.Request) {
 	session,_ := cache.Get(r, "cookie-name")
 	if user, ok := session.Values["user"].(string); ok {
-		store.GetStore(user)
+		place, err := store.GetStore(user)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		} else {
+			err = templates.ExecuteTemplate(w, "store", place)
+			if err != nil {
+				log.Fatal("Cannot retrieve store page.")
+			}
+		}
 	} else {
 		fmt.Println("what just happened")
 	}
