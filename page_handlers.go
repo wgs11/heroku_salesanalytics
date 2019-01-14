@@ -13,8 +13,13 @@ func Makeuser(w http.ResponseWriter, r *http.Request) {
 }
 
 func Displayhome(w http.ResponseWriter, r *http.Request) {
-	err := templates.ExecuteTemplate(w, "login", "")
+	var err error
+	if IsSignedIn(w,r) {
+		err = templates.ExecuteTemplate(w, "home", "")
+	} else {
+		err = templates.ExecuteTemplate(w, "login", "")
+	}
 	if err != nil {
-		log.Fatal("Cannot retrieve login page.")
+		log.Fatal("Cannot retrieve page.")
 	}
 }
