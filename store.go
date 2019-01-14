@@ -28,7 +28,7 @@ func (store *dbStore) GetStore(user string) error {
 		err := row.Next()
 		if err {
 			fmt.Println("got here, there was a result row")
-			row.Scan(location.LocationID, location.City, location.ManagerID, location.Region);
+			row.Scan(&location.LocationID, &location.City, &location.ManagerID, &location.Region);
 			fmt.Println(location.LocationID, location.City, location.ManagerID, location.Region)
 			}
 		}
