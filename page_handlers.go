@@ -5,11 +5,19 @@ import (
 	"net/http"
 )
 
-func Makeuser(w http.ResponseWriter, r *http.Request) {
+func Displaycreate(w http.ResponseWriter, r *http.Request) {
 	err := templates.ExecuteTemplate(w, "create", "")
 	if err != nil {
 		log.Fatal("Cannot retrieve login page.")
 	}
+}
+
+func Displaystores(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func Displayprofile(w http.ResponseWriter, r *http.Request) {
+
 }
 
 func Displayhome(w http.ResponseWriter, r *http.Request) {

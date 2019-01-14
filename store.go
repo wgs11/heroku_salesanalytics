@@ -9,13 +9,28 @@ import (
 type Store interface {
 	CheckUser(creds *Credentials) error
 	CreateUser(creds *NewUser) error
+	GetStore(user string) error
 
 }
 
 type dbStore struct {
 	db *sql.DB
 }
-
+func (store *dbStore) GetStore(user string) error {
+	location := &Location{}
+	row, err := store.db.Query("SELECT (location_id,location_name,manager_id,region) FROM stores WHERE location_id = (SELECT store_id FROM employees WHERE user_name = $1)",user)
+	if err != nil {
+		return err
+	} else {
+		defer row.Close()
+		err := row.Next()
+		if err {
+			row.Scan(&location.LocationID, location.City, location.ManagerID, location.Region)
+			fmt.Println(location)
+		}
+	}
+	return nil
+}
 func (store *dbStore) CheckUser(creds *Credentials) error {
 	dummyCreds := &Credentials{}
 	row, err := store.db.Query("SELECT password FROM employees WHERE user_name = $1",creds.Username)
