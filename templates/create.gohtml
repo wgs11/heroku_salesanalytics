@@ -14,12 +14,12 @@
             <input type="lname" name="lname" id="inputLname" class="form-control" placeholder="Last Name" required>
             <input type="username" name="username" id="inputEmail" class="form-control" placeholder="User Name" required autofocus>
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <select type="hidden" name="position" id="inputPosition" required>
-                <option value=0>Team Member</option>
-                <option value=1>Team Leader</option>
-                <option value=2>Team Manager</option>
-                <option value=3>Assistant Manager</option>
-                <option value=4>Store Manager</option>
+            <select type="position" name="position" id="inputPosition" required>
+                <option input type="hidden" value=0>Team Member</option>
+                <option input type="hidden" value=1>Team Leader</option>
+                <option input type="hidden" value=2>Team Manager</option>
+                <option input type="hidden" value=3>Assistant Manager</option>
+                <option input type="hidden" value=4>Store Manager</option>
             </select>
             <select type="store" name="store" id="inputStore" required>
                 <option value=45>Crocker Park</option>
