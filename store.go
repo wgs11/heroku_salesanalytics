@@ -38,7 +38,7 @@ func (store *dbStore) GetManagers() ([]*ManagerForm, error) {
 	return managers, nil
 }
 
-func (store *dbStore) GetReviews(location string) ([]*Review, error) {
+func (store *dbStore) GetReviews(location string, day string) ([]*Review, error) {
 	rows, err := store.db.Query("SELECT day, answers::bit(100), feedback FROM reviews WHERE store_id = $1", location)
 
 	if err != nil {
