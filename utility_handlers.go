@@ -46,7 +46,7 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 		session.Save(r,w)
 	} else{
 	}
-	http.Redirect(w,r,"/",200)
+	http.Redirect(w,r,"/", 302)
 
 }
 
