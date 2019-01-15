@@ -44,10 +44,9 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 			session.Values["admin"] = false
 		}
 		session.Save(r,w)
-		http.Redirect(w,r,"/", http.StatusFound)
 	} else{
-		fmt.Println("/")
 	}
+	http.Redirect(w,r,"/",200)
 
 }
 
