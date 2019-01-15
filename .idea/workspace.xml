@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/templates/create.gohtml" line="11" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea964e0-04a1-46a9-8717-09796300e229" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/utility_handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/utility_handlers.go" afterDir="false" />
-    </list>
+    <list default="true" id="bea964e0-04a1-46a9-8717-09796300e229" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,6 +275,11 @@
             <path>
               <item name="salesanalytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="salesanalytics" type="462c0819:PsiDirectoryNode" />
+              <item name="Godeps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="salesanalytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="salesanalytics" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -317,7 +320,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.104477614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
