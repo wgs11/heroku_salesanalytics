@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -12,6 +13,19 @@ func Displaycreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func Displaycreatestore(w http.ResponseWriter, r *http.Request) {
+	managers, err := store.GetManagers()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	managerblock := []ManagerForm{}
+	for _, element := range managers {
+		managerblock = append(managerblock, (*element))
+	}
+	err = templates.ExecuteTemplate(w, "create_store", managerblock)
+
+}
 func Displaystores(w http.ResponseWriter, r *http.Request) {
 
 }

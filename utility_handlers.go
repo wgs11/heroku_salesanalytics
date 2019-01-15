@@ -10,6 +10,12 @@ type Credentials struct {
 	Username string `json:"username", db:"username"`
 }
 
+type ManagerForm struct {
+	ID int `json:"employee_id", db:"employee_id"`
+	First string `json:"fname", db:"fname"`
+	Last string `json:"lname", db:"lname"`
+}
+
 type NewUser struct {
 	Password string `json:"password", db:"password"`
 	Username string `json:"username", db:"username"`
