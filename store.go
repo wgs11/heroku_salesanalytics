@@ -14,6 +14,7 @@ type Store interface {
 	GetReview(location string, day string) (*Review, error)
 	GetReviews(location string, day string) ([]*Review, error)
 	GetManagers() ([]*ManagerForm, error)
+	CreateStore(creds *NewStoreCreds) error
 
 }
 
@@ -21,7 +22,18 @@ type dbStore struct {
 	db *sql.DB
 }
 
-func (store *dbStore) GetManagers() ([]*ManagerForm, error) {
+func (store *dbStore) CreateStore(creds *NewStoreCreds) error {
+	_,err := store.db.Query("INSERT INTO stores (location_id,location_name,manager_id,region) VALUES ($1,$2,(SELECT employee_id FROM employees WHERE fname = $3),$4)", creds.Number, creds.Name, creds.First, creds.Region)
+	if err != nil {
+		fmt.Println("there was a problem")
+		fmt.Println(err)
+		return err
+	}
+	fmt.Println("got to here")
+	return nil
+}
+
+func (store *dbStore) GetManagers(creds *NewStoreCreds) ([]*ManagerForm, error) {
 	rows, err := store.db.Query("SELECT employee_id, fname, lname FROM employees WHERE position > 3")
 	if err != nil {
 		return nil, err
