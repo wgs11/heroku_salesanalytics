@@ -15,6 +15,7 @@ type Store interface {
 	GetReviews(location string, day string) ([]*Review, error)
 	GetManagers() ([]*ManagerForm, error)
 	CreateStore(creds *NewStoreCreds) error
+	GetStores() ([]*Location, error)
 
 }
 
@@ -31,6 +32,23 @@ func (store *dbStore) CreateStore(creds *NewStoreCreds) error {
 	}
 	fmt.Println("got to here")
 	return nil
+}
+
+func (store *dbStore) GetStores() ([]*Location, error) {
+	rows, err := store.db.Query("SELECT location_name FROM stores")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	stores := []*Location{}
+	for rows.Next() {
+		single := &Location{}
+		if err := rows.Scan(&single.City); err != nil {
+			return nil, err
+		}
+		stores = append(stores, single)
+	}
+	return stores, nil
 }
 
 func (store *dbStore) GetManagers() ([]*ManagerForm, error) {

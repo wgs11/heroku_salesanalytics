@@ -7,7 +7,16 @@ import (
 )
 
 func Displaycreate(w http.ResponseWriter, r *http.Request) {
-	err := templates.ExecuteTemplate(w, "create", "")
+	stores, err := store.GetStores()
+	storeblock := []Location{}
+	for _, element := range stores {
+		storeblock = append(storeblock, (*element))
+	}
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	err = templates.ExecuteTemplate(w, "create", stores)
 	if err != nil {
 		log.Fatal("Cannot retrieve login page.")
 	}

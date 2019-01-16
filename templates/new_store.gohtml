@@ -14,7 +14,7 @@
             <input type="number" step="1" pattern="\d+" name="storeid" id="inputStoreid" class="form-control" placeholder="Store ID Number" />
             <select type="manager" name="manager" id="inputManager" required>
                 {{range .}}
-                    <option value="{{.First}} {{.Last}}">{{.First}} {{.Last}}</option>
+                    <option value={{.City}}>{{.City}}</option>
                         {{end}}
             </select>
             <select type="region" name="region" id="inputRegion" required>
