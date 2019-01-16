@@ -33,7 +33,7 @@ func (store *dbStore) CreateStore(creds *NewStoreCreds) error {
 	return nil
 }
 
-func (store *dbStore) GetManagers(creds *NewStoreCreds) ([]*ManagerForm, error) {
+func (store *dbStore) GetManagers() ([]*ManagerForm, error) {
 	rows, err := store.db.Query("SELECT employee_id, fname, lname FROM employees WHERE position > 3")
 	if err != nil {
 		return nil, err
