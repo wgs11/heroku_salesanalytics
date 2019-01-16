@@ -7,34 +7,15 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-<div>
-    {{range .}}
-{{.ID}} {{.First}} {{.Last}}
-
-{{end}}
-</div>
 <div class="container">
     <div class="card card-container">
         <form action="/signup">
-            <input type="fname" name="fname" id="inputFname" class="form-control" placeholder="First Name" required>
-            <input type="lname" name="lname" id="inputLname" class="form-control" placeholder="Last Name" required>
-            <input type="username" name="username" id="inputEmail" class="form-control" placeholder="User Name" required autofocus>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <select type="position" name="position" id="inputPosition" required>
-                <option value=0>Team Member</option>
-                <option value=1>Team Leader</option>
-                <option value=2>Team Manager</option>
-                <option value=3>Assistant Manager</option>
-                <option value=4>Store Manager</option>
-            </select>
-            <select type="hidden" name="store" id="inputStore" required>
-                <option value=45>Crocker Park</option>
-                <option value=46>Pinecrest</option>
-                <option value=60>Northbrook</option>
-                <option value=61>Winnetka</option>
-                <option value=65>Wexford</option>
-                <option value=74>Pitt Food Truc</option>
-                <option value=66>Castle Shannon</option>
+            <input type="location" name="location" id="inputLocation" class="form-control" placeholder="Store Location" required autofocus>
+            <input type="number" step="1" pattern="\d+" name="storeid" id="inputStoreid" class="form-control" placeholder="Store ID Number" />
+            <select type="manager" name="manager" id="inputManager" required>
+                {{range .}}
+                    <option value={{.ID}}>{{.First}} {{.Last}}</option>
+                        {{end}}
             </select>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
         </form><!-- /form -->
