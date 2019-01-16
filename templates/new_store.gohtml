@@ -14,7 +14,7 @@
             <input type="number" step="1" pattern="\d+" name="storeid" id="inputStoreid" class="form-control" placeholder="Store ID Number" />
             <select type="manager" name="manager" id="inputManager" required>
                 {{range .}}
-                    <option value={{.First}} {{.Last}}>{{.First}} {{.Last}}</option>
+                    <option value={{.First}}+{{.Last}}>{{.First}} {{.Last}}</option>
                         {{end}}
             </select>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
