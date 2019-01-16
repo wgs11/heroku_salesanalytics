@@ -33,4 +33,16 @@ func Getstores(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func Makestore(w http.ResponseWriter, r *http.Request) {
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	manager := r.FormValue("manager")
+	number := r.FormValue("storeid")
+	location := r.FormValue("location")
+	fmt.Println(manager,number,location)
+	http.Redirect(w,r,"/",302)
+}
+
 
