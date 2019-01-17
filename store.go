@@ -150,9 +150,11 @@ func (store *dbStore) CheckUser(creds *Credentials) error {
 	if err != nil {
 		return err
 	} else {
+		fmt.Println("for some reason there's no error here")
 		defer row.Close()
 		err := row.Next()
 		if err {
+			fmt.Println("for some reason it says there's a row")
 			row.Scan(&dummyCreds.Password)
 			fmt.Println(bcrypt.CompareHashAndPassword([]byte(dummyCreds.Password),[]byte(creds.Password)))
 			return(bcrypt.CompareHashAndPassword([]byte(dummyCreds.Password),[]byte(creds.Password)))
