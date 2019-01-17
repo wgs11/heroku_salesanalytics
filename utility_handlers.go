@@ -21,7 +21,7 @@ type NewUser struct {
 	Username string `json:"username", db:"username"`
 	First	string `json:"fname", db:"fname"`
 	Last 	string `json:"fname", db:"lname"`
-	Home	string `json:"store_id", db:"store_id"`
+	Home	string `json:"location_name", db:"location_name"`
 	Position string `json:"position", db:"position"`
 }
 
