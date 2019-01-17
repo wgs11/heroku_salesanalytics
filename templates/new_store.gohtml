@@ -13,6 +13,7 @@
             <input type="location" name="location" id="inputLocation" class="form-control" placeholder="Store Location" required autofocus>
             <input type="number" step="1" pattern="\d+" name="storeid" id="inputStoreid" class="form-control" placeholder="Store ID Number" />
             <select type="manager" name="manager" id="inputManager" required>
+                <option value="No Manager">No Manager</option>
                 {{range .}}
                     <option value="{{.First}} {{.Last}}">{{.First}} {{.Last}}</option>
                         {{end}}
