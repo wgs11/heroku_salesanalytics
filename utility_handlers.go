@@ -72,5 +72,5 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	creds.Home = r.FormValue("store")
 	fmt.Println(creds.Username, creds.Password, creds.First,creds.Last,creds.Position,creds.Home)
 	store.CreateUser(creds)
-	http.Redirect(w, r, "/", http.StatusOK)
+	http.Redirect(w, r, "/", http.StatusFound)
 }

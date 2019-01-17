@@ -10,6 +10,7 @@ import (
 type Store interface {
 	CheckUser(creds *Credentials) error
 	CreateUser(creds *NewUser) error
+	GetUser(user_name string) (*NewUser, error)
 	GetStore(user string) (*Location, error)
 	GetReview(location string, day string) (*Review, error)
 	GetReviews(location string, day string) ([]*Review, error)
@@ -21,6 +22,26 @@ type Store interface {
 
 type dbStore struct {
 	db *sql.DB
+}
+
+func (store *dbStore) GetUser(user_name string) (*NewUser, error) {
+	user := &NewUser{}
+	rows, err := store.db.Query("SELECT fname, lname, position, store_id FROM employees WHERE user_name = $1", user_name)
+	if err != nil {
+		fmt.Println("there was a problem")
+		fmt.Println(err)
+		return nil, err
+	} else {
+		defer rows.Close()
+		err := rows.Next()
+		if err {
+			if err := rows.Scan(&user.First, &user.Last, &user.Position, &user.Home); err != nil {
+				return nil, err
+			}
+		}
+		return user, nil
+	}
+	return nil, nil
 }
 
 func (store *dbStore) CreateStore(creds *NewStoreCreds) error {
