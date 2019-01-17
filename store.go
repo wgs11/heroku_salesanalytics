@@ -156,6 +156,8 @@ func (store *dbStore) CheckUser(creds *Credentials) error {
 			row.Scan(&dummyCreds.Password)
 			fmt.Println(bcrypt.CompareHashAndPassword([]byte(dummyCreds.Password),[]byte(creds.Password)))
 			return(bcrypt.CompareHashAndPassword([]byte(dummyCreds.Password),[]byte(creds.Password)))
+		} else {
+			return nil
 		}
 	}
 	return nil
