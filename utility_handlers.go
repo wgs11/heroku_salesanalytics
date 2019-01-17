@@ -41,6 +41,7 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 	creds.Username = r.FormValue("username")
 	creds.Password = r.FormValue("password")
 	if store.CheckUser(creds) == nil {
+		fmt.Println("there was no issue signing in")
 		session,_ := cache.Get(r, "cookie-name")
 		session.Values["authenticated"] = true
 		session.Values["user"] = creds.Username
