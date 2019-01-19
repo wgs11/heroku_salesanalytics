@@ -39,21 +39,26 @@ func Displaystores(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Displayprofile(w http.ResponseWriter, r *http.Request) {
+func Newreview(w http.ResponseWriter, r *http.Request) {
+	err := templates.ExecuteTemplate(w, "review", "")
+	if err != nil {
+		log.Fatal("Cannot retrieve new review page.")
+	}
+}
 
+func Displayprofile(w http.ResponseWriter, r *http.Request) {
+	//session,_ := cache.Get(r, "cookie-name")
+	//if str, ok := session.Values["user"].(string); ok {
+	//user,_ := store.GetUser(str)
+	//if user != nil {
+	//err = templates.ExecuteTemplate(w, "profile", user)
+	//}
 }
 
 func Displayhome(w http.ResponseWriter, r *http.Request) {
 	var err error
 	if IsSignedIn(w,r) {
-		session,_ := cache.Get(r, "cookie-name")
-		if str, ok := session.Values["user"].(string); ok {
-			user,_ := store.GetUser(str)
-			if user != nil {
-				err = templates.ExecuteTemplate(w, "home", user)
-			}
-		}
-
+		err = templates.ExecuteTemplate(w, "home", "")
 	} else {
 		err = templates.ExecuteTemplate(w, "login", "")
 	}
@@ -61,3 +66,4 @@ func Displayhome(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("Cannot retrieve page.")
 	}
 }
+

@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/assets/custom.css" />
+
     <title>Sales Analytics</title>
 
 </head>
 <body>
-{{.First}} {{.Last}}
 <div class="banner"></div>
-<div class="sidenav">
-    <a href="/">Home</a>
-    <a href="/stores">Stores</a>
-    <a href="/profile">Profile</a>
-</div>
+{{template "navbar"}}
+
 </body>
 </html>
 {{end}}
