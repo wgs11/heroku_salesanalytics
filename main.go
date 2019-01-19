@@ -31,7 +31,7 @@ func newRouter() *mux.Router {
   r.HandleFunc("/profile", Displayprofile)
   r.HandleFunc("/newstore", Displaycreatestore)
   r.HandleFunc("/makestore", Makestore)
-  r.HandleFunc("newreview", Newreview)
+  r.HandleFunc("/newreview", Newreview)
   return r
 }
 
