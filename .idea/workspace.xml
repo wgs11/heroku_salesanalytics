@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bea964e0-04a1-46a9-8717-09796300e229" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/new_review.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/new_review.gohtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/header.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.gohtml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +33,7 @@
           <entry key="env" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="go" value="13" />
-          <entry key="gohtml" value="6" />
+          <entry key="gohtml" value="7" />
           <entry key="html" value="9" />
           <entry key="json" value="2" />
           <entry key="lock" value="1" />
@@ -45,7 +45,7 @@
         <counts>
           <entry key="CSS" value="3" />
           <entry key="Go" value="13" />
-          <entry key="Go template" value="6" />
+          <entry key="Go template" value="7" />
           <entry key="HTML" value="9" />
           <entry key="JSON" value="2" />
           <entry key="PLAIN_TEXT" value="7" />
@@ -91,15 +91,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/store_handler.go">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="952">
-                  <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/page_handlers.go">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="351">
@@ -108,11 +99,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/new_review.gohtml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="102">
                   <caret line="6" column="89" selection-start-line="6" selection-start-column="89" selection-end-line="6" selection-end-column="89" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/templates/header.gohtml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
                 </state>
               </provider>
             </entry>
@@ -182,7 +182,7 @@
             <entry file="file://$PROJECT_DIR$/templates/create.gohtml">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="68">
-                  <caret line="4" selection-start-line="4" selection-end-line="5" selection-end-column="89" />
+                  <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="66" />
                 </state>
               </provider>
             </entry>
@@ -220,7 +220,6 @@
         <option value="$PROJECT_DIR$/templates/sidebar.html" />
         <option value="$PROJECT_DIR$/templates/header.html" />
         <option value="$PROJECT_DIR$/templates/footer.go" />
-        <option value="$PROJECT_DIR$/templates/header.gohtml" />
         <option value="$PROJECT_DIR$/templates/footer.gohtml" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/templates/login.gohtml" />
@@ -243,6 +242,7 @@
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/page_handlers.go" />
         <option value="$PROJECT_DIR$/templates/new_review.gohtml" />
+        <option value="$PROJECT_DIR$/templates/header.gohtml" />
       </list>
     </option>
   </component>
@@ -380,13 +380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/header.gohtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/newstore.gohtml" />
     <entry file="file://$PROJECT_DIR$/templates/store.gohtml">
       <provider selected="true" editor-type-id="text-editor">
@@ -475,6 +468,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/new_review.gohtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="89" selection-start-line="6" selection-start-column="89" selection-end-line="6" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/create.gohtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -482,10 +482,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/new_review.gohtml">
+    <entry file="file://$PROJECT_DIR$/templates/header.gohtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="89" selection-start-line="6" selection-start-column="89" selection-end-line="6" selection-end-column="89" />
+        <state relative-caret-position="85">
+          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
         </state>
       </provider>
     </entry>
