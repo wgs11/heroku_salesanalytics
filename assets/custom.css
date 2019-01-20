@@ -12,6 +12,9 @@
     display: inline-block;
     margin-right: 25px;
 }
+.checkbox-inline {
+    width: 450px;
+}
 .sidenav {
     height: 100%;
     width: 120px;
