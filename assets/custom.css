@@ -8,7 +8,9 @@
     border-bottom: solid;
 }
 
-
+.inline {
+    display: inline-block;
+}
 .sidenav {
     height: 100%;
     width: 120px;
