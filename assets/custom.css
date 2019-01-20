@@ -9,15 +9,12 @@
 }
 
 
-.on-right {
-    float: right;
-}
 .inline {
     display: inline-block;
     margin-right: 25px;
 }
 .checkbox-inline {
-    width: 450px;
+    width: 460px;
 }
 .sidenav {
     height: 100%;
