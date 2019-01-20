@@ -17,11 +17,21 @@ type Store interface {
 	GetManagers() ([]*ManagerForm, error)
 	CreateStore(creds *NewStoreCreds) error
 	GetStores() ([]*Location, error)
+	DBSeed(questions []string)
 
 }
 
 type dbStore struct {
 	db *sql.DB
+}
+
+func (store *dbStore) DBSeed(questions []string) {
+	for _, question := range questions{
+		_, err := store.db.Query("INSERT INTO questions (prompt) VALUES ($1)", question)
+		if err != nil {
+			fmt.Println("there was an issue with question creation.")
+		}
+	}
 }
 
 func (store *dbStore) GetUser(user_name string) (*NewUser, error) {
