@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/templates/create.gohtml" line="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea964e0-04a1-46a9-8717-09796300e229" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/new_review.gohtml" beforeDir="false" afterPath="$PROJECT_DIR$/templates/new_review.gohtml" afterDir="false" />
-    </list>
+    <list default="true" id="bea964e0-04a1-46a9-8717-09796300e229" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
