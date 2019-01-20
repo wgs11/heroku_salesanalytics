@@ -8,6 +8,10 @@
     border-bottom: solid;
 }
 
+
+.on-right {
+    float: right;
+}
 .inline {
     display: inline-block;
     margin-right: 25px;
