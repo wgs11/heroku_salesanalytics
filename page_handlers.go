@@ -42,7 +42,6 @@ func Displaystores(w http.ResponseWriter, r *http.Request) {
 
 func Newreview(w http.ResponseWriter, r *http.Request) {
 	qs := store.GetQuestions()
-	fmt.Println(qs[0])
 	err := templates.ExecuteTemplate(w, "newreview", qs)
 	if err != nil {
 		log.Fatal("Cannot retrieve new review page.")

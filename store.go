@@ -36,6 +36,7 @@ func (store *dbStore) GetQuestions() []string{
 		var single string
 		for rows.Next() {
 			if err := rows.Scan(single); err != nil {
+				fmt.Println("scan fail")
 				return nil
 			}
 			qs = append(qs,single)
