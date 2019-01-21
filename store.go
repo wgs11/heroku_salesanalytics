@@ -28,6 +28,7 @@ type dbStore struct {
 func (store *dbStore) GetQuestions()(questions []string){
 	rows, err := store.db.Query("SELECT * FROM questions")
 	if err != nil {
+		fmt.Println("returning nil because error")
 		return nil
 	} else {
 		defer rows.Close()
@@ -39,9 +40,11 @@ func (store *dbStore) GetQuestions()(questions []string){
 			}
 			qs = append(qs,single)
 		}
-		return qs
 		fmt.Println(qs[0])
+		return qs
+
 	}
+	fmt.Println("returning nil because stuff")
 	return nil
 }
 
