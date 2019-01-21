@@ -128,7 +128,9 @@ func SeedDB(w http.ResponseWriter, r *http.Request) {
 		"Are the soap dispensers stocked and clean?",
 		"Are the air fresheners working?",
 		"Is the changing table clean?"}
-	store.DBSeed(questions)
+	for _,question := range questions {
+		store.DBSeed(question)
+	}
 }
 
 func IsSignedIn(w http.ResponseWriter, r *http.Request) bool {
