@@ -42,10 +42,15 @@ func Displaystores(w http.ResponseWriter, r *http.Request) {
 
 func Newreview(w http.ResponseWriter, r *http.Request) {
 	qs := store.GetQuestions()
-	err := templates.ExecuteTemplate(w, "newreview", qs)
-	if err != nil {
-		log.Fatal("Cannot retrieve new review page.")
+	if qs != nil {
+		fmt.Println("this")
+	} else {
+		fmt.Println("problem")
 	}
+	//err := templates.ExecuteTemplate(w, "newreview", qs)
+	//if err != nil {
+	//	log.Fatal("Cannot retrieve new review page.")
+	//}
 }
 
 func Displayprofile(w http.ResponseWriter, r *http.Request) {
