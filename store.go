@@ -18,14 +18,14 @@ type Store interface {
 	CreateStore(creds *NewStoreCreds) error
 	GetStores() ([]*Location, error)
 	DBSeed(question string)
-	GetQuestions() (questions []string)
+	GetQuestions() ([]string)
 }
 
 type dbStore struct {
 	db *sql.DB
 }
 
-func (store *dbStore) GetQuestions()(questions []string){
+func (store *dbStore) GetQuestions()([]string){
 	rows, err := store.db.Query("SELECT * FROM questions")
 	if err != nil {
 		fmt.Println("returning nil because error")
