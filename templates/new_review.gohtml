@@ -8,15 +8,17 @@
     <a href="/profile">Profile</a>
 </div>
 <div>
-    {{range .Questions}}
-{{.}}
-{{end}}
+
+
+
 </div>
+{{range .Questions}}
 <div class="checkbox">
     <label class="checkbox-inline">
-        <div class="inline"> Is the parking lot clean?</div><input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger">
+        <div class="inline"> {{.}}</div><input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger">
     </label>
 </div>
+{{end}}
 
 {{template "footer"}}
 </html>
