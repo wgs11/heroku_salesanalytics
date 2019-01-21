@@ -40,6 +40,7 @@ func (store *dbStore) GetQuestions()(questions []string){
 			qs = append(qs,single)
 		}
 		return qs
+		fmt.Println(qs[0])
 	}
 	return nil
 }
