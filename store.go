@@ -35,7 +35,7 @@ func (store *dbStore) GetQuestions() []string{
 		qs := []string{}
 		var single string
 		for rows.Next() {
-			if err := rows.Scan(single); err != nil {
+			if err := rows.Scan(&single); err != nil {
 				fmt.Println("scan fail")
 				fmt.Println(err)
 				return nil
