@@ -18,11 +18,30 @@ type Store interface {
 	CreateStore(creds *NewStoreCreds) error
 	GetStores() ([]*Location, error)
 	DBSeed(question string)
-
+	GetQuestions() (questions []string)
 }
 
 type dbStore struct {
 	db *sql.DB
+}
+
+func (store *dbStore) GetQuestions()(questions []string){
+	rows, err := store.db.Query("SELECT * FROM questions")
+	if err != nil {
+		return nil
+	} else {
+		defer rows.Close()
+		qs := []string{}
+		var single string
+		for rows.Next() {
+			if err := rows.Scan(single); err != nil {
+				return nil
+			}
+			qs = append(qs,single)
+		}
+		return qs
+	}
+	return nil
 }
 
 func (store *dbStore) DBSeed(question string) {

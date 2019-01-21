@@ -25,6 +25,10 @@ type NewUser struct {
 	Position string `json:"position", db:"position"`
 }
 
+type QuestionSet struct {
+	Questions []string
+}
+
 func SeedDB(w http.ResponseWriter, r *http.Request) {
 	questions := []string{
 		"Is the parking lot clean?",

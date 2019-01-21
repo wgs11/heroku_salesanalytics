@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+
 func Displaycreate(w http.ResponseWriter, r *http.Request) {
 	stores, err := store.GetStores()
 	storeblock := []Location{}
@@ -40,7 +41,8 @@ func Displaystores(w http.ResponseWriter, r *http.Request) {
 }
 
 func Newreview(w http.ResponseWriter, r *http.Request) {
-	err := templates.ExecuteTemplate(w, "newreview", "")
+	qs := QuestionSet{}
+	err := templates.ExecuteTemplate(w, "newreview", qs)
 	if err != nil {
 		log.Fatal("Cannot retrieve new review page.")
 	}
