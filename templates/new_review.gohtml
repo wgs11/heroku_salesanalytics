@@ -7,6 +7,11 @@
     <a href="/stores">Stores</a>
     <a href="/profile">Profile</a>
 </div>
+<div>
+    {{range .Questions}}
+{{.}}
+{{end}}
+</div>
 <div class="checkbox">
     <label class="checkbox-inline">
         <div class="inline"> Is the parking lot clean?</div><input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger">
