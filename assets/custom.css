@@ -107,6 +107,7 @@ EDIT ON
     font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
     padding: 40px;
     overflow: hidden;
+    display: inline-block;
 }
 
 .switch-title {
