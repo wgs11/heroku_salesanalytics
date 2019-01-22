@@ -97,11 +97,9 @@ th.rotate > div {
 }
 
 
-HTML CSS
-
-Result
-
-EDIT ON
+.form {
+    display: inline-block;
+}
 
 .switch-field {
     font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
