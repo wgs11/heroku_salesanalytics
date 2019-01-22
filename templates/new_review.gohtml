@@ -16,12 +16,12 @@
     {{range .Questions}}
     <div class="switch-field">
         <div class="switch-title">{{.}}</div>
-        <input type="radio" id="switch_3_left" name="switch_{{.}}" value="yes" checked/>
-        <label for="switch_3_left">Yes</label>
-        <input type="radio" id="switch_3_center" name="switch_{{.}}" value="no"/>
-        <label for="switch_3_center">No</label>
-        <input type="radio" id="switch_3_right" name="switch_{{.}}" value="NA"/>
-        <label for="switch_3_right">N/A</label>
+        <input type="radio" id="switch_{{.}}_left" name="switch_{{.}}" value="yes" checked/>
+        <label for="switch_{{.}}_left">Yes</label>
+        <input type="radio" id="switch_{{.}}_center" name="switch_{{.}}" value="no"/>
+        <label for="switch_{{.}}_center">No</label>
+        <input type="radio" id="switch_{{.}}_right" name="switch_{{.}}" value="NA"/>
+        <label for="switch_{{.}}_right">N/A</label>
     </div>
             {{end}}
 </form>
