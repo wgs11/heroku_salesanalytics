@@ -16,11 +16,11 @@
     {{range .Questions}}
     <div class="switch-field">
         <div class="switch-title">{{.}}</div>
-        <input type="radio" id="switch_3_left" name="switch_3" value="yes" checked/>
+        <input type="radio" id="switch_3_left" name="switch_{{.}}" value="yes" checked/>
         <label for="switch_3_left">Yes</label>
-        <input type="radio" id="switch_3_center" name="switch_3" value="no"/>
+        <input type="radio" id="switch_3_center" name="switch_{{.}}" value="no"/>
         <label for="switch_3_center">No</label>
-        <input type="radio" id="switch_3_right" name="switch_3" value="NA"/>
+        <input type="radio" id="switch_3_right" name="switch_{{.}}" value="NA"/>
         <label for="switch_3_right">N/A</label>
     </div>
             {{end}}
