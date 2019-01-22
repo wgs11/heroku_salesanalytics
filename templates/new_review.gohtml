@@ -12,13 +12,26 @@
 
 
 </div>
-{{range .Questions}}
-<div class="checkbox">
-    <label class="checkbox-inline">
-        <div class="inline"> {{.}}</div><input type="checkbox" checked data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger">
-    </label>
-</div>
-{{end}}
+<form class="form">
+    {{range .Questions}}
+    <div class="switch-field">
+        <div class="switch-title">{{.}}</div>
+        <input type="radio" id="switch_3_left" name="switch_3" value="yes" checked/>
+        <label for="switch_3_left">Yes</label>
+        <input type="radio" id="switch_3_center" name="switch_3" value="no"/>
+        <label for="switch_3_center">No</label>
+        <input type="radio" id="switch_3_right" name="switch_3" value="NA"/>
+        <label for="switch_3_right">N/A</label>
+    </div>
+            {{end}}
+</form>
+
+{{/*<div class="checkbox">*/}}
+    {{/*<label class="checkbox-inline">*/}}
+        {{/*<input type="checkbox" name="yes-no"checked data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger"><div class="inline"> {{.}}</div>*/}}
+    {{/*</label>*/}}
+{{/*</div>*/}}
+
 
 {{template "footer"}}
 </html>
