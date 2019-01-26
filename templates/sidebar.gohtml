@@ -1,7 +1,9 @@
 {{define "navbar"}}
 <div class="sidenav">
     <a href="/">Home</a>
+    {{if eq .Position 4}}
     <a href="/stores">Stores</a>
+            {{end}}
     <a href="/profile">Profile</a>
 </div>
 {{end}}
