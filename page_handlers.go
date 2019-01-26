@@ -51,7 +51,7 @@ func Displayprofile(w http.ResponseWriter, r *http.Request) {
 func Displayhome(w http.ResponseWriter, r *http.Request) {
 	var err error
 	if IsSignedIn(w,r) {
-		user := findUser()
+		user := findUser(r)
 		if user != nil {
 			err = templates.ExecuteTemplate(w, "home", user)
 		}
@@ -63,7 +63,7 @@ func Displayhome(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func findUser() *NewUser {
+func findUser(r *http.Request) *NewUser {
 	session, _ := cache.Get(r, "cookie-name")
 	if str, ok := session.Values["user"].(string); ok {
 		user, _ := store.GetUser(str)
