@@ -41,32 +41,20 @@ func Displaystores(w http.ResponseWriter, r *http.Request) {
 }
 
 func Newreview(w http.ResponseWriter, r *http.Request) {
-	qs := QuestionSet{}
-	qs.Questions = store.GetQuestions()
-	if qs.Questions != nil {
-		err := templates.ExecuteTemplate(w, "newreview", qs)
-		if err != nil {
-			log.Fatal("Cannot retrieve new review page.")
-		}
-	} else {
-		fmt.Println("problem")
-	}
 
 }
 
 func Displayprofile(w http.ResponseWriter, r *http.Request) {
-	//session,_ := cache.Get(r, "cookie-name")
-	//if str, ok := session.Values["user"].(string); ok {
-	//user,_ := store.GetUser(str)
-	//if user != nil {
-	//err = templates.ExecuteTemplate(w, "profile", user)
-	//}
+
 }
 
 func Displayhome(w http.ResponseWriter, r *http.Request) {
 	var err error
 	if IsSignedIn(w,r) {
-		err = templates.ExecuteTemplate(w, "home", "")
+		user := findUser()
+		if user != nil {
+			err = templates.ExecuteTemplate(w, "home", user)
+		}
 	} else {
 		err = templates.ExecuteTemplate(w, "login", "")
 	}
@@ -75,3 +63,13 @@ func Displayhome(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func findUser() *NewUser {
+	session, _ := cache.Get(r, "cookie-name")
+	if str, ok := session.Values["user"].(string); ok {
+		user, _ := store.GetUser(str)
+		if user != nil {
+			return user
+		}
+	}
+	return nil
+}

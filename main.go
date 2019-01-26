@@ -32,7 +32,6 @@ func newRouter() *mux.Router {
   r.HandleFunc("/newstore", Displaycreatestore)
   r.HandleFunc("/makestore", Makestore)
   r.HandleFunc("/newreview", Newreview)
-  r.HandleFunc("/seedDB", SeedDB)
   return r
 }
 
@@ -44,9 +43,6 @@ func determineListenAddress() (string, error) {
   return ":" + port, nil
 }
 
-func hello(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintln(w, "Hello World")
-}
 
 func main() {
   addr, err := determineListenAddress()

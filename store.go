@@ -17,45 +17,12 @@ type Store interface {
 	GetManagers() ([]*ManagerForm, error)
 	CreateStore(creds *NewStoreCreds) error
 	GetStores() ([]*Location, error)
-	DBSeed(question string)
-	GetQuestions() []string
 }
 
 type dbStore struct {
 	db *sql.DB
 }
 
-func (store *dbStore) GetQuestions() []string{
-	rows, err := store.db.Query("SELECT * FROM questions")
-	if err != nil {
-		fmt.Println("returning nil because error")
-		return nil
-	} else {
-		defer rows.Close()
-		qs := []string{}
-		var single string
-		for rows.Next() {
-			if err := rows.Scan(&single); err != nil {
-				fmt.Println("scan fail")
-				fmt.Println(err)
-				return nil
-			}
-			qs = append(qs,single)
-		}
-		return qs
-
-	}
-	fmt.Println("returning nil because stuff")
-	return nil
-}
-
-func (store *dbStore) DBSeed(question string) {
-		row, err := store.db.Query("INSERT INTO questions (prompt) VALUES ($1)", question)
-		if err != nil {
-			fmt.Println("there was an issue with question creation.")
-		}
-		defer row.Close()
-}
 
 func (store *dbStore) GetUser(user_name string) (*NewUser, error) {
 	user := &NewUser{}
